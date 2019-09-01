@@ -1,9 +1,11 @@
 package warehouse.entity;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
+@Table(name = "order_table")
 public class Order {
 
     @Id
@@ -11,10 +13,11 @@ public class Order {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false, unique = true)
     private User userId;
 
     @OneToMany
-    private List<Product> products;
+    private Collection<Product> products;
     private String address;
 
     public Order() {
@@ -43,7 +46,7 @@ public class Order {
         this.userId = userId;
     }
 
-    public List<Product> getProducts() {
+    public Collection<Product> getProducts() {
         return products;
     }
 
