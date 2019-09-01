@@ -6,5 +6,5 @@ import warehouse.entity.Product;
 import java.util.Optional;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
-    Optional<Product> findByProductId(Long id);
+    Optional<Product> findById(Long id);
 }
