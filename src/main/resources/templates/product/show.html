@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Serving Web Content (show)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<table>
+    <tr>
+        <td th:text="NAME"></td>
+        <td th:text="PRICE"></td>
+        <td th:text="DESCRIPTION"></td>
+    </tr>
+    <tr>
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.description}"></td>
+    </tr>
+</table>
+</body>
+</html>

@@ -20,7 +20,7 @@ public class ProductController {
     public String getAll(Model model){
         List<Product> products = warehouseService.getAll();
         model.addAttribute("products",products);
-        return "list";
+        return "product/list";
     }
     @GetMapping("/{id}")
     public String getById(Model model, @PathVariable Long id){
