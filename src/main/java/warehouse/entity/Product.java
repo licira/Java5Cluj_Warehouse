@@ -21,6 +21,10 @@ public class Product {
         this.description = description;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public long getId() {
         return id;
     }
