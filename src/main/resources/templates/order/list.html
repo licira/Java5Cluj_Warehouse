@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<!--<th:block th:include="logout.html"/>-->
+<body>
+
+<table>
+    <th:block th:each="order : ${orders}">
+        <tr>
+            <td th:text="${order.address}"></td>
+            <td>
+                <th:block th:each="product : ${order.products}">
+                    <tr>
+                        <td th:text="${product.name}"></td>
+                    </tr>
+                </th:block>
+            </td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

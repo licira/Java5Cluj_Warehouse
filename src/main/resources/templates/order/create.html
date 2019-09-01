@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create new order</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<!--<th:block th:include="logout.html"/>-->
+<body>
+<table>
+    <tr>
+        <td th:text="NAME"></td>
+        <td th:text="PRICE"></td>
+    </tr>
+    <form action="#" th:action="@{//order/save}" th:object="${order}" method="post">
+        <tr>
+            <td><input type="hidden" th:field="*{id}"/></td>
+            <td><input type="text" th:field="*{userId}"/></td>
+            <td><input type="text" th:field="*{address}"/></td>
+
+            <td><input type="submit" value="Submit"/> </td>
+
+    </form>
+</table>
+</body>
+</html>
