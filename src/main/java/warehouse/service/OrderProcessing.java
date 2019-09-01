@@ -22,12 +22,12 @@ public class OrderProcessing {
         return orderRepository.findById(id);
     }
 
-    public Order saveOrUpdate(Order order) {
+    public Order save(Order order) {
 
         return orderRepository.save(order);
     }
 
-    public void deleteById(Long id){
+    public void delete(Long id){
         Optional<Order> optionalOrder = get(id);
         if (optionalOrder.isPresent()) {
             orderRepository.delete(optionalOrder.get());

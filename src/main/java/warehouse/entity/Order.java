@@ -17,6 +17,9 @@ public class Order {
     private List<Product> products;
     private String address;
 
+    public Order() {
+    }
+
     public Order(Long id, User customerId, List<Product> products, String address) {
         this.id = id;
         this.userId = customerId;
