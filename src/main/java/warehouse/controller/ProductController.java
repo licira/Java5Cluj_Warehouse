@@ -8,6 +8,7 @@ import warehouse.entity.Product;
 import warehouse.service.WarehouseService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/product")
@@ -23,8 +24,10 @@ public class ProductController {
     }
     @GetMapping("/{id}")
     public String getById(Model model, @PathVariable Long id){
-        Product product = warehouseService.get(id);
-        model.addAttribute("product",product);
+        Optional<Product> productOptional = warehouseService.get(id);
+        if(productOptional.isPresent()) {
+            model.addAttribute("product", productOptional.get());
+        }
         return "product/show";
     }
 
@@ -36,8 +39,10 @@ public class ProductController {
 
     @GetMapping("/edit/{id}")
     public String edit(Model model,@PathVariable Long id){
-        Product product = warehouseService.get(id);
-        model.addAttribute("product",product);
+        Optional<Product> productOptional = warehouseService.get(id);
+        if(productOptional.isPresent()) {
+            model.addAttribute("product", productOptional.get());
+        }
         return "product/show";
     }
 
