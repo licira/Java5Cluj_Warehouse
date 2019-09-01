@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import warehouse.entity.Product;
+import warehouse.service.WarehouseService;
 
 import java.util.List;
 
@@ -12,17 +13,17 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductController {
     @Autowired
-    private WarehouseManager warehouseManager;
+    private WarehouseService warehouseService;
 
     @GetMapping("/list")
     public String getAll(Model model){
-        List<Product> products= warehouseManager.getAll();
+        List<Product> products = warehouseService.getAll();
         model.addAttribute("products",products);
         return "list";
     }
     @GetMapping("/{id}")
     public String getById(Model model, @PathVariable Long id){
-        Product product= warehouseManager.get(id);
+        Product product = warehouseService.get(id);
         model.addAttribute("product",product);
         return "product/show";
     }
@@ -35,27 +36,27 @@ public class ProductController {
 
     @GetMapping("/edit/{id}")
     public String edit(Model model,@PathVariable Long id){
-        Product product= warehouseManager.get(id);
+        Product product = warehouseService.get(id);
         model.addAttribute("product",product);
         return "product/show";
     }
 
     @PostMapping("/save")
     public String save(@ModelAttribute Product product,Model model){
-        product= warehouseManager.save(product);
+        product = warehouseService.save(product);
         model.addAttribute("product",product);
         return "product/show";
     }
     @PutMapping("/update")
     public String update(@ModelAttribute Product product,Model model){
-        product= warehouseManager.save(product);
+        product = warehouseService.save(product);
         model.addAttribute("product",product);
         return "product/show";
     }
 
     @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable Long id){
-        warehouseManager.delete(id);
+        warehouseService.delete(id);
         return "redirect:/list";
     }
 }
