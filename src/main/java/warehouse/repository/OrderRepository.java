@@ -6,5 +6,5 @@ import warehouse.entity.Order;
 import java.util.Optional;
 
 public interface OrderRepository extends JpaRepository<Order, Long> {
-    Optional<Order> findByOrderId(Long id);
+    Optional<Order> findById(Long id);
 }

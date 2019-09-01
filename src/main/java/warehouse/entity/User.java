@@ -1,7 +1,9 @@
 package warehouse.entity;
 
+import warehouse.role.Role;
+
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -10,17 +12,20 @@ public abstract class User {
     @GeneratedValue
     private Long id;
 
-    private String userName;
+    private String username;
     private String password;
-    private List roles;
 
-    public User(String userName, String password, List roles) {
-        this.userName = userName;
+    @Enumerated(EnumType.STRING)
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<Role> roles;
+
+    public User(String userName, String password, Set<Role> roles) {
+        this.username = userName;
         this.password = password;
         this.roles = roles;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -28,12 +33,12 @@ public abstract class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -44,11 +49,11 @@ public abstract class User {
         this.password = password;
     }
 
-    public List getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 }
