@@ -27,7 +27,7 @@ public class OrderProcessing {
         return orderRepository.save(order);
     }
 
-    public OrderRepository deleteById(Long id){
+    public void deleteById(Long id){
         Optional<Order> optionalOrder = getById(id);
         if (optionalOrder.isPresent()) {
             orderRepository.delete(optionalOrder.get());
