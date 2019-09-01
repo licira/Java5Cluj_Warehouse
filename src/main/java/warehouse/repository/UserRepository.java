@@ -1,6 +1,7 @@
 package warehouse.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import warehouse.entity.User;
 
 import java.util.Optional;
 
