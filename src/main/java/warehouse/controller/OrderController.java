@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import warehouse.entity.Order;
+import warehouse.service.OrderProcessing;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/order")
@@ -22,8 +24,10 @@ public class OrderController {
     }
     @GetMapping("/{id}")
     public String getById(Model model, @PathVariable Long id){
-        Order order= orderProcessing.get(id);
-        model.addAttribute("order",order);
+        Optional<Order> orderOptional = orderProcessing.get(id);
+        if (orderOptional.isPresent()) {
+            model.addAttribute("order",orderOptional.get());
+        }
         return "order/show";
     }
 
@@ -35,8 +39,10 @@ public class OrderController {
 
     @GetMapping("/edit/{id}")
     public String edit(Model model,@PathVariable Long id){
-        Order order= orderProcessing.get(id);
-        model.addAttribute("order",order);
+        Optional<Order> orderOptional = orderProcessing.get(id);
+        if (orderOptional.isPresent()) {
+            model.addAttribute("order",orderOptional.get());
+        }
         return "order/show";
     }
 
