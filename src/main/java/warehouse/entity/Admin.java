@@ -1,13 +1,13 @@
 package warehouse.entity;
 
 import javax.persistence.Entity;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Admin extends User {
     private Double salary;
 
-    public Admin(String userName, String password, List roles) {
+    public Admin(String userName, String password, Set roles) {
         super(userName, password, roles);
     }
 

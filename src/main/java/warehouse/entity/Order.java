@@ -1,10 +1,6 @@
 package warehouse.entity;
 
-import org.springframework.data.annotation.Id;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -13,13 +9,17 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private User customerId;
+
+    @ManyToOne
+    private User userId;
+
+    @OneToMany
     private List<Product> products;
     private String address;
 
     public Order(Long id, User customerId, List<Product> products, String address) {
         this.id = id;
-        this.customerId = customerId;
+        this.userId = customerId;
         this.products = products;
         this.address = address;
     }
@@ -32,12 +32,12 @@ public class Order {
         this.id = id;
     }
 
-    public User getCustomerId() {
-        return customerId;
+    public User getUserId() {
+        return userId;
     }
 
-    public void setCustomerId(User customerId) {
-        this.customerId = customerId;
+    public void setUserId(User userId) {
+        this.userId = userId;
     }
 
     public List<Product> getProducts() {
