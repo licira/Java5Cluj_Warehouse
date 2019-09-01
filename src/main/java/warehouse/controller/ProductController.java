@@ -20,15 +20,17 @@ public class ProductController {
     public String getAll(Model model){
         List<Product> products = warehouseService.getAll();
         model.addAttribute("products",products);
-        return "list";
+        return "product/list";
     }
     @GetMapping("/{id}")
     public String getById(Model model, @PathVariable Long id){
         Optional<Product> productOptional = warehouseService.get(id);
         if(productOptional.isPresent()) {
             model.addAttribute("product", productOptional.get());
+            return "product/show";
+        } else {
+            return "exceptions/404";
         }
-        return "product/show";
     }
 
     @GetMapping("/create")
@@ -42,8 +44,10 @@ public class ProductController {
         Optional<Product> productOptional = warehouseService.get(id);
         if(productOptional.isPresent()) {
             model.addAttribute("product", productOptional.get());
+            return "product/edit";
+        } else {
+            return "exceptions/404";
         }
-        return "product/show";
     }
 
     @PostMapping("/save")
