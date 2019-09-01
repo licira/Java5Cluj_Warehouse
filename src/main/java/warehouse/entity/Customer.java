@@ -1,23 +1,26 @@
 package warehouse.entity;
 
 import javax.persistence.Entity;
-import java.util.List;
+import javax.persistence.OneToMany;
+import java.util.Set;
 
 @Entity
 public class Customer extends User {
-    private List orders;
+
+    @OneToMany
+    private Set<Order> orders;
     private String adress;
     private String iban;
 
-    public Customer(String userName, String password, List roles) {
+    public Customer(String userName, String password, Set roles) {
         super(userName, password, roles);
     }
 
-    public List getOrders() {
+    public Set<Order> getOrders() {
         return orders;
     }
 
-    public void setOrders(List orders) {
+    public void setOrders(Set<Order> orders) {
         this.orders = orders;
     }
 
