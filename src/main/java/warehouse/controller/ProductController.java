@@ -22,7 +22,8 @@ public class ProductController {
         model.addAttribute("products",products);
         return "product/list";
     }
-    @GetMapping("/{id}")
+
+    @GetMapping("/show/{id}")
     public String getById(Model model, @PathVariable Long id){
         Optional<Product> productOptional = warehouseService.get(id);
         if(productOptional.isPresent()) {
@@ -56,7 +57,8 @@ public class ProductController {
         model.addAttribute("product",product);
         return "product/show";
     }
-    @PutMapping("/update")
+
+    @PostMapping("/update")
     public String update(@ModelAttribute Product product,Model model){
         product = warehouseService.save(product);
         model.addAttribute("product",product);

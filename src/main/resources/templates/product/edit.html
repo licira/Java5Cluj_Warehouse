@@ -13,7 +13,7 @@
         <td th:text="PRICE"></td>
         <td th:text="DESCRIPTION"></td>
     </tr>
-    <form action="#" th:action="@{/product/update}" th:object="${product}" method="put">
+    <form action="#" th:action="@{/product/update}" th:object="${product}" method="post">
         <tr>
             <td><input type="hidden" th:field="*{id}"/></td>
             <td><input type="text" th:field="*{name}"/></td>
