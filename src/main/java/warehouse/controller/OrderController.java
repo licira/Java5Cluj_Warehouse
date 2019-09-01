@@ -27,8 +27,10 @@ public class OrderController {
         Optional<Order> orderOptional = orderProcessing.get(id);
         if (orderOptional.isPresent()) {
             model.addAttribute("order",orderOptional.get());
+            return "order/show";
+        } else {
+            return "exceptions/404";
         }
-        return "order/show";
     }
 
     @GetMapping("/create")
@@ -42,8 +44,10 @@ public class OrderController {
         Optional<Order> orderOptional = orderProcessing.get(id);
         if (orderOptional.isPresent()) {
             model.addAttribute("order",orderOptional.get());
+            return "order/edit";
+        } else {
+            return "exceptions/404";
         }
-        return "order/show";
     }
 
     @PostMapping("/save")

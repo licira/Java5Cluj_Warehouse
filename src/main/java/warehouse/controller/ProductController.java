@@ -27,8 +27,10 @@ public class ProductController {
         Optional<Product> productOptional = warehouseService.get(id);
         if(productOptional.isPresent()) {
             model.addAttribute("product", productOptional.get());
+            return "product/show";
+        } else {
+            return "exceptions/404";
         }
-        return "product/show";
     }
 
     @GetMapping("/create")
@@ -42,8 +44,10 @@ public class ProductController {
         Optional<Product> productOptional = warehouseService.get(id);
         if(productOptional.isPresent()) {
             model.addAttribute("product", productOptional.get());
+            return "product/edit";
+        } else {
+            return "exceptions/404";
         }
-        return "product/show";
     }
 
     @PostMapping("/save")
