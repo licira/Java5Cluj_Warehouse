@@ -12,17 +12,17 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductController {
     @Autowired
-    private ProductService productService;
+    private WarehouseManager warehouseManager;
 
     @GetMapping("/list")
     public String getAll(Model model){
-        List<Product> products=productService.getAll();
+        List<Product> products= warehouseManager.getAll();
         model.addAttribute("products",products);
         return "list";
     }
     @GetMapping("/{id}")
     public String getById(Model model, @PathVariable Long id){
-        Product product=productService.get(id);
+        Product product= warehouseManager.get(id);
         model.addAttribute("product",product);
         return "product/show";
     }
@@ -35,27 +35,27 @@ public class ProductController {
 
     @GetMapping("/edit/{id}")
     public String edit(Model model,@PathVariable Long id){
-        Product product=productService.get(id);
+        Product product= warehouseManager.get(id);
         model.addAttribute("product",product);
         return "product/show";
     }
 
     @PostMapping("/save")
     public String save(@ModelAttribute Product product,Model model){
-        product=productService.save(product);
+        product= warehouseManager.save(product);
         model.addAttribute("product",product);
         return "product/show";
     }
     @PutMapping("/update")
     public String update(@ModelAttribute Product product,Model model){
-        product=productService.save(product);
+        product= warehouseManager.save(product);
         model.addAttribute("product",product);
         return "product/show";
     }
 
     @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable Long id){
-        productService.delete(id);
+        warehouseManager.delete(id);
         return "redirect:/list";
     }
 }
