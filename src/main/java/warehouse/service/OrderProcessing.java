@@ -18,7 +18,7 @@ public class OrderProcessing {
         return orderRepository.findAll();
     }
 
-    public Optional<Order> getById(Long id) {
+    public Optional<Order> get(Long id) {
         return orderRepository.findById(id);
     }
 
@@ -28,7 +28,7 @@ public class OrderProcessing {
     }
 
     public void deleteById(Long id){
-        Optional<Order> optionalOrder = getById(id);
+        Optional<Order> optionalOrder = get(id);
         if (optionalOrder.isPresent()) {
             orderRepository.delete(optionalOrder.get());
         }
