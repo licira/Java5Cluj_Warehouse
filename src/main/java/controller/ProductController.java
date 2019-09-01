@@ -54,8 +54,8 @@ public class ProductController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public String delete(Model model,@PathVariable Long id){
+    public String delete(@PathVariable Long id){
         productService.delete(id);
-        return "list";
+        return "redirect:/list";
     }
 }
